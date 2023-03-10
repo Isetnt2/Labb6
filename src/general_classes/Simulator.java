@@ -6,10 +6,11 @@ public class Simulator{
     }
     public void run(){
         while(queue.size() != 0){
-            if(State.stop == true){
+            if(state.stop == true){
                 break;
             }
-            
+            Event nyttEvent = queue.next();
+            nyttEvent.runEvent();
         }
     }
 }
