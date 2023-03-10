@@ -31,7 +31,7 @@ public class SnabbköpView extends View {
     public void update(Observable o, Object arg) {
         Event event = (Event) arg;
         printUpdate(event);
-        if (event instanceof Stopphändelse) {
+        if (event instanceof StopEvent) {
             endPrint();
         }
     }
@@ -55,10 +55,10 @@ public class SnabbköpView extends View {
                 state.getPaymentTime().getMax(), state.getSeed());
     }
 
-    void printUpdate(Event event) {
+     void printUpdate(Event event) {
         String format = "%6.2f %s  %s  %3d %7.2f % 4d % 4d  % 4d    % 4d  %6.2f    % 4d    %s";
 
-        if (event instanceof StartHändelse || event instanceof Stopphändelse) {
+        if (event instanceof StartEvent || event instanceof StopEvent) {
             System.out.printf("%6.2f %s%n", state.getTime(), event.toString());
             return;
         }
