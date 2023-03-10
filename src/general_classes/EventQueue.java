@@ -18,5 +18,7 @@ public class EventQueue {
         queue.add(e);
     }
 
-
+    public Event next(){
+        return queue.remove(0);
+    }
 }
