@@ -21,4 +21,7 @@ public class EventQueue {
     public Event next(){
         return queue.remove(0);
     }
+    public int size(){
+        return queue.size();
+    }
 }
