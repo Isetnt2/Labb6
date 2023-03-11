@@ -4,14 +4,15 @@ import general_classes.Event;
 import general_classes.EventQueue;
 import general_classes.State;
 import specefika_klasser.ButiksState;
+import specefika_klasser.SkapaKund.Kund;
 
 public class Ankomsthändelse{
-    private Customer customer;
+    private Kund kund;
     private ButiksState state;
 
-    public Ankomsthändelse(ButiksState state, EventQueue queue, double time, Cutomer customer){
+    public Ankomsthändelse(ButiksState state, EventQueue queue, double time, Kund kund){
         super(state, queue, time);
-        this.cutomer = customer;
+        this.k = kund;
         this.state = state;
     }
     @Override
@@ -40,6 +41,6 @@ public class Ankomsthändelse{
     }
     @Override
     public String toString(){
-        return String.format("Ankomst % 6d", this.customer.id);
+        return String.format("Ankomst % 6d", this.kund.id);
     }
 }
