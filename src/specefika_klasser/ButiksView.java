@@ -6,19 +6,19 @@ import specefika_klasser.ButiksState;
 import java.util.*;
 
 /**
- * SnabbköpView implements the general view and prints output when events occur.
+ * ButiksView implements the general view and prints output when events occur.
  */
-public class SnabbköpView extends View {
+public class ButiksView extends View {
 
     private final ButiksState state;
 
     /**
-     * Constructor for SnabbköpView.
+     * Constructor for ButiksView.
      * Prints initial information about the simulation.
      *
-     * @param state the SnabbköpState being observed
+     * @param state the ButiksState being observed
      */
-    public SnabbköpView(ButiksState state) {
+    public ButiksView(ButiksState state) {
         super(state);
         this.state = state;
         printStart();
