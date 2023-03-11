@@ -4,6 +4,7 @@ import general_classes.Event;
 import general_classes.EventQueue;
 import general_classes.State;
 import specefika_klasser.ButiksState;
+import specefika_klasser.SkapaKund.*;
 
 import java.util.Random;
 
