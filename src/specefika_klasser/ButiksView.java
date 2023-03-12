@@ -50,9 +50,9 @@ public class ButiksView extends View {
             =======
                Tid Händelse  Kund  ?  led    ledT    I    $    :-(    köat    köT    köar    [Kassakö..]
             """;
-        System.out.printf(format, state.getAntalKassor(), state.getMaxAntalKunder(), state.getArrivalTime().getLambda(),
-                state.getPickupTime().getMin(), state.getPickupTime().getMax(), state.getPaymentTime().getMin(),
-                state.getPaymentTime().getMax(), state.getSeed());
+        System.out.printf(format, state.getRegistersPopulation(), state.getMaxCustomerPopulation(), state.getAnkomsttid().getLambda(),
+                state.getPlockTid().getMin(), state.getPlockTid().getMax(), state.getBetalningsTid().getMin(),
+                state.getBetalningsTid().getMax(), state.getSeed());
     }
 
     void printUpdate(Event event) {
@@ -64,15 +64,15 @@ public class ButiksView extends View {
         }
 
         String shopStatus = state.getShopOpen() ? "Ö" : "S";
-        int ledigaKassor = state.getLedigaKassor();
-        double tidLedigaKassor = state.getTidLedigaKassor();
-        int antalKunder = state.getAntalKunder();
-        int antalKunderHandlat = state.getAntalKunderHandlat();
-        int antalKunderMissat = state.getAntalKunderMissat();
-        int antalKunderKöat = state.getAntalKunderKöat();
-        double tidKunderKöat = state.getTidKunderKöat();
-        int kassaköSize = state.getKassakö().size();
-        String kassaköString = state.getKassakö().toString();
+        int ledigaKassor = state.getFreeRegisters();
+        double tidLedigaKassor = state.getFreeRegistersTime();
+        int antalKunder = state.getCustomerPopulation();
+        int antalKunderHandlat = state.getCustomersShopped();
+        int antalKunderMissat = state.getCustomersMissed();
+        int antalKunderKöat = state.getCustomersQueued();
+        double tidKunderKöat = state.getCustomerQueueTime();
+        int kassaköSize = state.getRegisterQueue().size();
+        String kassaköString = state.getRegisterQueue().toString();
 
         System.out.printf(format, state.getTime(), event.toString(), shopStatus, ledigaKassor, tidLedigaKassor,
                 antalKunder, antalKunderHandlat, antalKunderMissat, antalKunderKöat, tidKunderKöat, kassaköSize,
@@ -81,15 +81,15 @@ public class ButiksView extends View {
     }
 
     void endPrint() {
-        int totalCustomers = state.getAntalKunderHandlat() + state.getAntalKunderMissat();
-        int servedCustomers = state.getAntalKunderHandlat();
-        int missedCustomers = state.getAntalKunderMissat();
-        int totalRegisters = state.getAntalKassor();
-        double totalIdleTime = state.getTidLedigaKassor();
+        int totalCustomers = state.getCustomersShopped() + state.getCustomersMissed();
+        int servedCustomers = state.getCustomersShopped();
+        int missedCustomers = state.getCustomersMissed();
+        int totalRegisters = state.getRegistersPopulation();
+        double totalIdleTime = state.getFreeRegistersTime();
         double avgIdleTimePerRegister = totalIdleTime / totalRegisters;
         double idlePercentage = (avgIdleTimePerRegister / state.getLastPaymentTime()) * 100;
-        int queuedCustomers = state.getAntalKunderKöat();
-        double totalQueueTime = state.getTidKunderKöat();
+        int queuedCustomers = state.getCustomersQueued();
+        double totalQueueTime = state.getCustomerQueueTime();
         double avgQueueTime = totalQueueTime / queuedCustomers;
 
         String message = String.format("1) Av %d kunder handlade %d medan %d missades.%n" +

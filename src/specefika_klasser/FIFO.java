@@ -2,19 +2,19 @@ package specefika_klasser;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import snabbköp.CustomerFactory.Customer;
+import specefika_klasser.SkapaKund;
 
 /**
  * FIFO kö som lagrar Customers från CustomerFactory.
  */
 public class FIFO {
-    ArrayList<CustomerFactory.Customer> content = new ArrayList<CustomerFactory.Customer>();
+    ArrayList<SkapaKund.Kund> content = new ArrayList<SkapaKund.Kund>();
 
     /**
      * Lägger till en kund sist i kön
      * @param c Kunden som ska läggas till
      */
-    public void add(Customer customer){
+    public void add(SkapaKund.Kund customer){
         content.add(customer);
     }
 
@@ -22,7 +22,7 @@ public class FIFO {
      * Returnerar och tar bort nästa kund som står först i kön
      * @return Kunden som står först i kön
      */
-    public Customer next(){
+    public SkapaKund.Kund next(){
         return content.remove(0);
     }
 
