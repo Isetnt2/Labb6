@@ -5,28 +5,22 @@ import java.util.Observer;
 
 import general_classes.*;
 
+
 /**
  * ButiksView implements the general view and prints output when events occur.
  */
 public class ButiksView extends View implements Observer {
 
     private final ButiksState state;
-
-    /**
-     * Constructor for ButiksView.
-     * Prints initial information about the simulation.
-     *
-     * @param state the ButiksState being observed
-     */
+    
+    // This is the constructor for ButiksView. It prints initial information about the simulation. ButiksState being observed from here.
     public ButiksView(ButiksState state) {
         super(state);
         this.state = state;
         printStart();
     }
-
-    /**
-     * Update method that is called every time an event occurs and prints the corresponding output.
-     */
+    
+    // Update method that is called every time an event occurs and prints the corresponding output.
     @Override
     public void update(Observable o, Object arg) {
         Event event = (Event) arg;
@@ -36,6 +30,7 @@ public class ButiksView extends View implements Observer {
         }
     }
 
+    // Head of the simulation, prints out several parameters.
     private void printStart() {
         String format = """
             PARAMETRAR
@@ -55,6 +50,7 @@ public class ButiksView extends View implements Observer {
                 state.getBetalningsTid().getMax(), state.getSeed());
     }
 
+    // Prints out simulation updates.
     void printUpdate(Event event) {
         String format = "%6.2f %s  %s  %3d %7.2f % 4d % 4d  % 4d    % 4d  %6.2f    % 4d    %s";
 
@@ -80,6 +76,7 @@ public class ButiksView extends View implements Observer {
         System.out.println();
     }
 
+    // Final prints cluster. Tells store Story. (total time registers have been free and other interesting statistics...)
     void endPrint() {
         int totalCustomers = state.getAntalKunderHandlat() + state.getKunderMissade();
         int servedCustomers = state.getAntalKunderHandlat();
