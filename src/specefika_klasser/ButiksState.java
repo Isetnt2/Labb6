@@ -24,7 +24,7 @@ public class ButiksState extends State {
     private double CustomerQueueTime, FreeRegistersTime, ClosingTime, LastPaymentTime;
 
     // others
-    private boolean shopOpen = true;
+    private boolean shopOpen = false;
     private int seed;
     private Ankomsttid ankomsttid;
     private BetalningsTid betalningsTid;
@@ -45,6 +45,7 @@ public class ButiksState extends State {
         this.kassaKö = new FIFO();
         this.skapaKund = new SkapaKund();
         this.seed = seed;
+        this.shopOpen = true;
 
     }
 
