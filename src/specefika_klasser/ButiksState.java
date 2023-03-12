@@ -6,10 +6,9 @@ import general_classes.Event;
 import specefika_klasser.eventhändelser.*;
 import specefika_klasser.tider.*;
 
+// creates necessary variables
 public class ButiksState extends State {
 
-    // variables and etc
-    
     // customer related variables
     private int MaxAntalKunder, AntalKunder, AntalKunderHandlat, KunderKöat, KunderMissade;
 
@@ -28,8 +27,7 @@ public class ButiksState extends State {
     private FIFO kassaKö;
     private SkapaKund skapaKund;
 
-
-
+    // implements variables
     public ButiksState(int maxAntalKunder, int RegisterPopulation, double lambda,
                        double kmin, double kmax, double pmin, double pmax, int seed) {
 
@@ -163,6 +161,7 @@ public class ButiksState extends State {
         return this.seed;
     }
 
+    // Meddelar ändringar till Oberserver
     @Override
     public void notify(Event source) {
 
