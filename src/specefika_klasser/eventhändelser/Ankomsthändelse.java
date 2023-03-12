@@ -2,37 +2,38 @@ package specefika_klasser.eventhändelser;
 
 import general_classes.Event;
 import general_classes.EventQueue;
-import general_classes.State;
 import specefika_klasser.ButiksState;
 import specefika_klasser.SkapaKund.Kund;
 
-public class Ankomsthändelse{
+public class Ankomsthändelse extends Event{
     private Kund kund;
     private ButiksState state;
 
     public Ankomsthändelse(ButiksState state, EventQueue queue, double time, Kund kund){
         super(state, queue, time);
-        this.k = kund;
+        this.kund = kund;
         this.state = state;
     }
+
+
     @Override
     public void runEvent(){
         super.runEvent();
 
-        if (this.state.getShopOpen()){
-            double ankomstTid = this.state.getAnkomsttid(),finishTime(time);
+        if (this.state.getButikÖppen()){
+            double ankomstTid = this.state.getAnkomstTid().finishTime(time);
             Ankomsthändelse ankomsthändelse = new Ankomsthändelse(state, queue, ankomstTid, this.state.getSkapaKund().getKund());
             this.queue.insert(ankomsthändelse);
 
             if (this.state.getAntalKunder() < this.state.getMaxAntalKunder()){
-                this.state.increaseAntalKunder();
+                this.state.increaseCustomerPopulation();
 
-                double plocktid = this.state.getPlockTid().finishTime(time);
+                double plocktid = this.state.getPlockTid().slutTid(time);
                 PlockHändelse plockhändelse = new PlockHändelse(this.state, this.queue, plocktid, this.kund);
-                this.queue.insert(plocktid);
+                this.queue.insert(plockhändelse);
             }
             else{
-                ((ButiksState).this.state).increaseMissadeKunder();
+                ((ButiksState)this.state).increaseCustomersMissed();
             }
         }
         else{

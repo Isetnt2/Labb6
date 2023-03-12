@@ -4,6 +4,8 @@ import general_classes.Event;
 import general_classes.EventQueue;
 import general_classes.State;
 import specefika_klasser.ButiksState;
+import specefika_klasser.SkapaKund;
+import specefika_klasser.SkapaKund.Kund;
 
 public class Betalningshändelse extends Event{
 
@@ -20,25 +22,25 @@ public class Betalningshändelse extends Event{
 
         // minska antalet kunder i snabbköp, öka antalet kunder som har handlat
 
-        this.state.decreaseAntalKunder();
-        this.state.increaseAntalKunderHandlat();
+        this.state.decreaseCustomerPopulation();
+        this.state.increaseCustomersShopped();
 
         // kolla om det finns flera kunder i kassakö, och det finns tar den nästa
         // kunden, och sen skapa
         // en ny paymentEvent till kunden
-        if (this.state.getKassakö().hasNext()) {
-            Customer c = this.state.getKassakö().next();
-            double paymentTime = this.state.getPaymentTime().finishTime(this.time);
-            PaymentEvent paymentEvent = new PaymentEvent(state, queue, paymentTime, c);
+        if (this.state.getRegisterQueue().hasNext()) {
+            Kund c = this.state.getRegisterQueue().next();
+            double paymentTime = this.state.getBetalningsTid().finishTime(this.time);
+            Betalningshändelse paymentEvent = new Betalningshändelse(state, queue, paymentTime, c);
             this.queue.insert(paymentEvent);
         }
         // om det inte finns flera kunder ökas antalet ledigaKassor
         else {
-            this.state.increaseLedigaKassor();
+            this.state.increaseFreeRegisters();
         }
     }
 
     public String toString(){
-        return ("Betalning från : " + this.customer.id);
+        return ("Betalning från : " + this.kund.id);
     }
 }
