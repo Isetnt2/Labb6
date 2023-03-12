@@ -52,7 +52,7 @@ public class Optimize {
             int missat = runSimulationOnce(maxKunder, medel, lambda, kmin, kmax,
                     pmin, pmax, seed, endTime, stopTime).getKunderMissade();
 
-            if(missat < bästa || (missat == bästa) && medel < bästaJustNu){
+            if(missat < bästa || (missat == bästa && medel < bästaJustNu)){
                 bästa = missat;
                 bästaJustNu = medel;
             }

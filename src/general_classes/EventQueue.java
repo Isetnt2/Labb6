@@ -12,7 +12,7 @@ public class EventQueue {
         for (int i = 0; i < queue.size(); i++) {
             if(e.getTime() < queue.get(i).getTime()){
                 queue.add(i, e);
-                continue;
+                return;
             }
         }
         queue.add(e);
