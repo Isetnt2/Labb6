@@ -5,11 +5,11 @@ import general_classes.EventQueue;
 import specefika_klasser.ButiksState;
 import specefika_klasser.SkapaKund.Kund;
 
-public class Ankomsthändelse extends Event{
+public class AnkomstHändelse extends Event{
     private Kund kund;
     private ButiksState state;
 
-    public Ankomsthändelse(ButiksState state, EventQueue queue, double time, Kund kund){
+    public AnkomstHändelse(ButiksState state, EventQueue queue, double time, Kund kund){
         super(state, queue, time);
         this.kund = kund;
         this.state = state;
@@ -22,7 +22,7 @@ public class Ankomsthändelse extends Event{
 
         if (this.state.StatusÖppenButik()){
             double ankomstTid = this.state.getAnkomstTid().finishTime(time);
-            Ankomsthändelse ankomsthändelse = new Ankomsthändelse(state, queue, ankomstTid, this.state.getSkapaKund().getKund());
+            AnkomstHändelse ankomsthändelse = new AnkomstHändelse(state, queue, ankomstTid, this.state.getSkapaKund().getKund());
             this.queue.insert(ankomsthändelse);
 
             if (this.state.getAntalKunder() < this.state.getMaxAntalKunder()){
