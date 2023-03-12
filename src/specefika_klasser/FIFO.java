@@ -5,17 +5,17 @@ import java.util.Arrays;
 import specefika_klasser.SkapaKund;
 
 /**
- * FIFO kö som lagrar Customers från CustomerFactory.
+ * FIFO kö som lagrar Kunder från SkapaKund.
  */
 public class FIFO {
     ArrayList<SkapaKund.Kund> content = new ArrayList<SkapaKund.Kund>();
 
     /**
      * Lägger till en kund sist i kön
-     * @param c Kunden som ska läggas till
+     * @param kund Kunden som ska läggas till
      */
-    public void add(SkapaKund.Kund customer){
-        content.add(customer);
+    public void add(SkapaKund.Kund kund){
+        content.add(kund);
     }
 
     /**
