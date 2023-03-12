@@ -25,7 +25,7 @@ public class ButiksView extends View {
         }
     }
 
-    // Head of the simulation, prints out parameters.
+    // Head of the simulation, prints out several parameters.
     private void printStart() {
         String format = """
             PARAMETRAR
