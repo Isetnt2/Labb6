@@ -123,8 +123,8 @@ public class ButiksState extends State {
         this.FreeRegistersTime += time;
     }
 
-    public boolean getShopOpen(){
-        return this.shopOpen;
+    public boolean StatusÖppnaButiken(){
+        return this.ÖppnaButiken;
     }
 
     public void setShopStatus(boolean status){
