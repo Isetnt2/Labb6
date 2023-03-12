@@ -2,14 +2,13 @@
 package specefika_klasser; // the class is part of the specefika_klasser package
 
 import general_classes.State; // imports (general) State to be able to extend State.
-import general_classes.Event; 
-import general_classes.Stopphändelse;
-import specefika_klasser.eventhändelser.Ankomsthändelse;
+import general_classes.Event;
+import specefika_klasser.eventhändelser.AnkomstHändelse;
 import specefika_klasser.eventhändelser.Betalningshändelse;
-import specefika_klasser.eventhändelser.PlockHändelse;
 import specefika_klasser.eventhändelser.StängerHändelse;
 import specefika_klasser.tider.Ankomsttid;
 import specefika_klasser.tider.BetalningsTid;
+import specefika_klasser.tider.PlockTid;
 
 public class ButiksState extends State {
 
@@ -26,7 +25,7 @@ public class ButiksState extends State {
 
     // others
     private boolean shopOpen = true;
-    private int f;
+    private int seed;
     private Ankomsttid ankomsttid;
     private BetalningsTid betalningsTid;
     private PlockTid plockTid;
@@ -36,16 +35,16 @@ public class ButiksState extends State {
 
 
     public ButiksState(int maxCustomerPopulation, int RegisterPopulation, double lambda,
-                       double kmin, double kmax, double pmin, double pmax, int f) {
+                       double kmin, double kmax, double pmin, double pmax, int seed) {
 
         this.MaxCustomerPopulation = maxCustomerPopulation;
         this.RegistersPopulation = RegisterPopulation;
-        this.ankomsttid = new Ankomsttid(f, lambda);
-        this.betalningsTid = new BetalningsTid(f, kmin, kmax);
-        this.plockTid = new PlockTid(f, pmin, pmax);
+        this.ankomsttid = new Ankomsttid(seed, lambda);
+        this.betalningsTid = new BetalningsTid(seed, kmin, kmax);
+        this.plockTid = new PlockTid(seed, pmin, pmax);
         this.kassaKö = new FIFO();
         this.skapaKund = new SkapaKund();
-        this.f = f;
+        this.seed = seed;
 
     }
 
@@ -130,7 +129,7 @@ public class ButiksState extends State {
     public void setShopStatus(boolean status){
         this.shopOpen = status;
         if(!status){
-            this.stängerTid = this.getTime();
+            this.ClosingTime = this.getTime();
         }
     }
 
@@ -150,29 +149,27 @@ public class ButiksState extends State {
         return this.skapaKund;
     }
 
-    public FIFO getKassaKö(){
+    public FIFO getRegisterQueue(){
         return this.kassaKö;
     }
 
     public int getSeed(){
-        return this.f;
+        return this.seed;
     }
 
     @Override
     public void notify(Event source) {
 
-        // Håll koll på sista paymentEvent tiden för views beräkning
         if (source instanceof Betalningshändelse) {
             this.LastPaymentTime = source.getTime();
         }
 
-        // Kör ej om stopEvent ELLER om arrivalevent efter stängning
-        if (!(source instanceof Ankomsthändelse && !this.shopOpen) && !(source instanceof StängerHändelse)) {
+        if (!(source instanceof AnkomstHändelse && !this.shopOpen) && !(source instanceof StängerHändelse)) {
             // Beräkna tid
             double deltaTime = source.getTime() - this.getTime();
 
             // Antal kunder som köar * tiden
-            double köTid = this.getKassaKö().size() * deltaTime;
+            double köTid = this.getRegisterQueue().size() * deltaTime;
             // Antal lediga kassor * tiden
             double ledigTid = this.getFreeRegisters() * deltaTime;
 
