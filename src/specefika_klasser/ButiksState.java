@@ -41,6 +41,7 @@ public class ButiksState extends State {
         this.kassaKö = new FIFO();
         this.skapaKund = new SkapaKund();
         this.seed = seed;
+        ÖppnaButiken();
 
     }
 
@@ -118,10 +119,19 @@ public class ButiksState extends State {
         this.LedigaKassorTid += time;
     }
 
-    public boolean getButikÖppen(){
-        return this.ButikÖppen;
+
+    public boolean StatusÖppenButik(){
+        return this.ÖppenButik;
     }
 
+    public boolean ÖppnaButiken() {
+        this.ÖppenButik = true;
+    }
+    
+    public boolean StängButiken() {
+        this.ÖppenButik = false;
+    }
+    
     public void setShopStatus(boolean status){
         this.ButikÖppen = status;
         if(!status){
