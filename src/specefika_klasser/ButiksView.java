@@ -2,8 +2,6 @@ package specefika_klasser;
 
 import java.util.Observable;
 import general_classes.*;
-import specefika_klasser.ButiksState;
-import java.util.*;
 
 /**
  * ButiksView implements the general view and prints output when events occur.
@@ -50,7 +48,7 @@ public class ButiksView extends View {
             =======
                Tid Händelse  Kund  ?  led    ledT    I    $    :-(    köat    köT    köar    [Kassakö..]
             """;
-        System.out.printf(format, state.getRegistersPopulation(), state.getMaxCustomerPopulation(), state.getAnkomsttid().getLambda(),
+        System.out.printf(format, state.getAntalKassor(), state.getMaxAntalKunder(), state.getAnkomstTid().getLambda(),
                 state.getPlockTid().getMin(), state.getPlockTid().getMax(), state.getBetalningsTid().getMin(),
                 state.getBetalningsTid().getMax(), state.getSeed());
     }
@@ -63,14 +61,14 @@ public class ButiksView extends View {
             return;
         }
 
-        String shopStatus = state.getShopOpen() ? "Ö" : "S";
-        int ledigaKassor = state.getFreeRegisters();
-        double tidLedigaKassor = state.getFreeRegistersTime();
-        int antalKunder = state.getCustomerPopulation();
-        int antalKunderHandlat = state.getCustomersShopped();
-        int antalKunderMissat = state.getCustomersMissed();
-        int antalKunderKöat = state.getCustomersQueued();
-        double tidKunderKöat = state.getCustomerQueueTime();
+        String shopStatus = state.getButikÖppen() ? "Ö" : "S";
+        int ledigaKassor = state.getAntalLedigaKassor();
+        double tidLedigaKassor = state.getLedigaKassorTid();
+        int antalKunder = state.getAntalKunder();
+        int antalKunderHandlat = state.getAntalKunderHandlat();
+        int antalKunderMissat = state.getKunderMissade();
+        int antalKunderKöat = state.getKunderKöat();
+        double tidKunderKöat = state.getKundKöTid();
         int kassaköSize = state.getRegisterQueue().size();
         String kassaköString = state.getRegisterQueue().toString();
 
@@ -81,15 +79,15 @@ public class ButiksView extends View {
     }
 
     void endPrint() {
-        int totalCustomers = state.getCustomersShopped() + state.getCustomersMissed();
-        int servedCustomers = state.getCustomersShopped();
-        int missedCustomers = state.getCustomersMissed();
-        int totalRegisters = state.getRegistersPopulation();
-        double totalIdleTime = state.getFreeRegistersTime();
+        int totalCustomers = state.getAntalKunderHandlat() + state.getKunderMissade();
+        int servedCustomers = state.getAntalKunderHandlat();
+        int missedCustomers = state.getKunderMissade();
+        int totalRegisters = state.getAntalKassor();
+        double totalIdleTime = state.getLedigaKassorTid();
         double avgIdleTimePerRegister = totalIdleTime / totalRegisters;
-        double idlePercentage = (avgIdleTimePerRegister / state.getLastPaymentTime()) * 100;
-        int queuedCustomers = state.getCustomersQueued();
-        double totalQueueTime = state.getCustomerQueueTime();
+        double idlePercentage = (avgIdleTimePerRegister / state.getSistaBetalningsTid()) * 100;
+        int queuedCustomers = state.getKunderKöat();
+        double totalQueueTime = state.getKundKöTid();
         double avgQueueTime = totalQueueTime / queuedCustomers;
 
         String message = String.format("1) Av %d kunder handlade %d medan %d missades.%n" +

@@ -3,30 +3,26 @@ package specefika_klasser; // the class is part of the specefika_klasser package
 
 import general_classes.State; // imports (general) State to be able to extend State.
 import general_classes.Event;
-import specefika_klasser.eventhändelser.AnkomstHändelse;
-import specefika_klasser.eventhändelser.Betalningshändelse;
-import specefika_klasser.eventhändelser.StängerHändelse;
-import specefika_klasser.tider.Ankomsttid;
-import specefika_klasser.tider.BetalningsTid;
-import specefika_klasser.tider.PlockTid;
+import specefika_klasser.eventhändelser.*;
+import specefika_klasser.tider.*;
 
 public class ButiksState extends State {
 
     // variables and etc
     
     // customer related variables
-    private int MaxCustomerPopulation, CustomerPopulation, CustomersShopped, CustomersQueued, CustomersMissed;
+    private int MaxAntalKunder, AntalKunder, AntalKunderHandlat, KunderKöat, KunderMissade;
 
     // registry related variables
-    private int RegistersPopulation, CashierPopulation, FreeRegisters;
+    private int AntalKassor, AntalLedigaKassor;
 
     // time related variables
-    private double CustomerQueueTime, FreeRegistersTime, ClosingTime, LastPaymentTime;
+    private double KundKöTid, LedigaKassorTid, StängTid, SistaBetalningsTid;
 
     // others
-    private boolean ÖppenButik = false;
+    private boolean ButikÖppen = true;
     private int seed;
-    private Ankomsttid ankomsttid;
+    private Ankomsttid ankomstTid;
     private BetalningsTid betalningsTid;
     private PlockTid plockTid;
     private FIFO kassaKö;
@@ -34,12 +30,12 @@ public class ButiksState extends State {
 
 
 
-    public ButiksState(int maxCustomerPopulation, int RegisterPopulation, double lambda,
+    public ButiksState(int maxAntalKunder, int RegisterPopulation, double lambda,
                        double kmin, double kmax, double pmin, double pmax, int seed) {
 
-        this.MaxCustomerPopulation = maxCustomerPopulation;
-        this.RegistersPopulation = RegisterPopulation;
-        this.ankomsttid = new Ankomsttid(seed, lambda);
+        this.MaxAntalKunder = maxAntalKunder;
+        this.AntalKassor = RegisterPopulation;
+        this.ankomstTid = new Ankomsttid(seed, lambda);
         this.betalningsTid = new BetalningsTid(seed, kmin, kmax);
         this.plockTid = new PlockTid(seed, pmin, pmax);
         this.kassaKö = new FIFO();
@@ -49,79 +45,80 @@ public class ButiksState extends State {
 
     }
 
-    public int getMaxCustomerPopulation(){
-        return this.MaxCustomerPopulation;
+    public int getMaxAntalKunder(){
+        return this.MaxAntalKunder;
     }
 
-    public int getRegistersPopulation(){
-        return this.RegistersPopulation;
+    public int getAntalKassor(){
+        return this.AntalKassor;
     }
 
-    public int getFreeRegisters(){
-        return this.FreeRegisters;
+    public int getAntalLedigaKassor(){
+        return this.AntalLedigaKassor;
     }
 
     public void increaseFreeRegisters(){
-        this.FreeRegisters++;
+        this.AntalLedigaKassor++;
     }
 
     public void decreaseFreeRegisters(){
-        this.FreeRegisters--;
+        this.AntalLedigaKassor--;
     }
 
-    public int getCustomerPopulation(){
-        return this.CustomerPopulation;
+    public int getAntalKunder(){
+        return this.AntalKunder;
     }
 
     public void increaseCustomerPopulation(){
-        if(this.CustomerPopulation + 1 > this.MaxCustomerPopulation){
+        if(this.AntalKunder + 1 > this.MaxAntalKunder){
             throw new RuntimeException("Too many customers");
         }
-        this.CustomerPopulation++;
+        this.AntalKunder++;
     }
 
     public void decreaseCustomerPopulation(){
-        this.CustomerPopulation--;
+        this.AntalKunder--;
     }
 
-    public int getCustomersShopped(){
-        return this.CustomersShopped;
+    public int getAntalKunderHandlat(){
+        return this.AntalKunderHandlat;
     }
 
     public void increaseCustomersShopped(){
-        this.CustomersShopped++;
+        this.AntalKunderHandlat++;
     }
 
-    public int getCustomersQueued(){
-        return this.CustomersQueued;
+    public int getKunderKöat(){
+        return this.KunderKöat;
     }
 
     public void increaseCustomersQueued(){
-        this.CustomersQueued++;
+        this.KunderKöat++;
     }
 
-    public int getCustomersMissed(){
-        return this.CustomersMissed;
+    public int getKunderMissade(){
+        return this.KunderMissade;
     }
     public void increaseCustomersMissed(){
-        this.CustomersMissed++;
+        this.KunderMissade++;
     }
 
-    public double getCustomerQueueTime(){
-        return this.CustomerQueueTime;
+    public double getKundKöTid(){
+        return this.KundKöTid;
     }
 
     public void increaseCustomerQueueTime(double time){
-        this.CustomerQueueTime += time;
+        this.KundKöTid += time;
     }
 
-    public double getFreeRegistersTime(){
-        return this.FreeRegistersTime;
+    public double getLedigaKassorTid(){
+        return this.LedigaKassorTid;
     }
 
     public void increaseFreeResgistersTime(double time){
-        this.FreeRegistersTime += time;
+        this.LedigaKassorTid += time;
     }
+
 
     public boolean StatusÖppenButik(){
         return this.ÖppenButik;
@@ -136,14 +133,14 @@ public class ButiksState extends State {
     }
     
     public void setShopStatus(boolean status){
-        this.shopOpen = status;
+        this.ButikÖppen = status;
         if(!status){
-            this.ClosingTime = this.getTime();
+            this.StängTid = this.getTime();
         }
     }
 
-    public Ankomsttid getAnkomsttid(){
-        return this.ankomsttid;
+    public Ankomsttid getAnkomstTid(){
+        return this.ankomstTid;
     }
 
     public BetalningsTid getBetalningsTid(){
@@ -170,17 +167,17 @@ public class ButiksState extends State {
     public void notify(Event source) {
 
         if (source instanceof Betalningshändelse) {
-            this.LastPaymentTime = source.getTime();
+            this.SistaBetalningsTid = source.getTime();
         }
 
-        if (!(source instanceof AnkomstHändelse && !this.shopOpen) && !(source instanceof StängerHändelse)) {
+        if (!(source instanceof AnkomstHändelse && !this.ButikÖppen) && !(source instanceof StängerHändelse)) {
             // Beräkna tid
             double deltaTime = source.getTime() - this.getTime();
 
             // Antal kunder som köar * tiden
             double köTid = this.getRegisterQueue().size() * deltaTime;
             // Antal lediga kassor * tiden
-            double ledigTid = this.getFreeRegisters() * deltaTime;
+            double ledigTid = this.getAntalLedigaKassor() * deltaTime;
 
             // Lägg till i state
             this.increaseCustomerQueueTime(köTid);
@@ -192,11 +189,11 @@ public class ButiksState extends State {
     }
 
     public double getCloseTime() {
-        return this.ClosingTime;
+        return this.StängTid;
     }
 
-    public double getLastPaymentTime() {
-        return this.LastPaymentTime;
+    public double getSistaBetalningsTid() {
+        return this.SistaBetalningsTid;
     }
 
 }

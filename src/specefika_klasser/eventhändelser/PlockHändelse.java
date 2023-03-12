@@ -2,11 +2,8 @@ package specefika_klasser.eventhändelser;
 
 import general_classes.Event;
 import general_classes.EventQueue;
-import general_classes.State;
 import specefika_klasser.ButiksState;
 import specefika_klasser.SkapaKund.*;
-
-import java.util.Random;
 
 public class PlockHändelse extends Event {
 
@@ -21,7 +18,7 @@ public class PlockHändelse extends Event {
 
     public void runEvent(){
         super.runEvent();
-        if(this.state.getFreeRegisters() > 0) {
+        if(this.state.getAntalLedigaKassor() > 0) {
             this.state.decreaseFreeRegisters();
             double betalingstid = this.state.getBetalningsTid().finishTime(this.time);
             Betalningshändelse betalningshändelse = new Betalningshändelse(state, queue, betalingstid, this.kund);
