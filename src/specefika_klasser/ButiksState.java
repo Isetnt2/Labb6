@@ -39,6 +39,7 @@ public class ButiksState extends State {
         this.kassaKö = new FIFO();
         this.skapaKund = new SkapaKund();
         this.seed = seed;
+        this.AntalLedigaKassor = this.AntalKassor;
         ÖppnaButiken();
 
     }

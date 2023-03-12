@@ -23,7 +23,7 @@ public class RunSim {
         state.addObserver(view);
     }
     public static void main(String[] args){
-        int n = 0;
+        int n = 1;
 
         if(n == 0) {
             // Ex 1
