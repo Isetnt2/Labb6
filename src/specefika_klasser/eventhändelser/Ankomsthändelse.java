@@ -20,7 +20,7 @@ public class Ankomsthändelse extends Event{
     public void runEvent(){
         super.runEvent();
 
-        if (this.state.getButikÖppen()){
+        if (this.state.StatusÖppenButik()){
             double ankomstTid = this.state.getAnkomstTid().finishTime(time);
             Ankomsthändelse ankomsthändelse = new Ankomsthändelse(state, queue, ankomstTid, this.state.getSkapaKund().getKund());
             this.queue.insert(ankomsthändelse);

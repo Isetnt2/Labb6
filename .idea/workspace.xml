@@ -5,6 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="97f22fad-98e0-42af-a2f6-649579ae7131" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main_klasser/Optimize.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main_klasser/RunSim.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/K.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main_klasser/K.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/specefika_klasser/ButiksState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/specefika_klasser/ButiksState.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/specefika_klasser/eventhändelser/AnkomstHändelse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/specefika_klasser/eventhändelser/AnkomstHändelse.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
