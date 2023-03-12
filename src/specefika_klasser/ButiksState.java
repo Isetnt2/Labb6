@@ -45,7 +45,7 @@ public class ButiksState extends State {
         this.kassaKö = new FIFO();
         this.skapaKund = new SkapaKund();
         this.seed = seed;
-        this.ÖppenButik = true;
+        ÖppnaButiken();
 
     }
 
@@ -127,6 +127,14 @@ public class ButiksState extends State {
         return this.ÖppenButik;
     }
 
+    public boolean ÖppnaButiken() {
+        this.ÖppenButik = true;
+    }
+    
+    public boolean StängButiken() {
+        this.ÖppenButik = false;
+    }
+    
     public void setShopStatus(boolean status){
         this.shopOpen = status;
         if(!status){
