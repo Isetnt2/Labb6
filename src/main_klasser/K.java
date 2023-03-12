@@ -1,3 +1,5 @@
+package main_klasser;
+
 public interface K {
 
 	// Ex 1: (som sim1)

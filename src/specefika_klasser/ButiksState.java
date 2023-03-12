@@ -121,15 +121,15 @@ public class ButiksState extends State {
 
 
     public boolean StatusÖppenButik(){
-        return this.ÖppenButik;
+        return this.ButikÖppen;
     }
 
-    public boolean ÖppnaButiken() {
-        this.ÖppenButik = true;
+    public void ÖppnaButiken() {
+        this.ButikÖppen = true;
     }
     
-    public boolean StängButiken() {
-        this.ÖppenButik = false;
+    public void StängButiken() {
+        this.ButikÖppen = false;
     }
     
     public void setShopStatus(boolean status){
@@ -170,7 +170,7 @@ public class ButiksState extends State {
             this.SistaBetalningsTid = source.getTime();
         }
 
-        if (!(source instanceof AnkomstHändelse && !this.ButikÖppen) && !(source instanceof StängerHändelse)) {
+        if (!(source instanceof Ankomsthändelse && !this.ButikÖppen) && !(source instanceof StängerHändelse)) {
             // Beräkna tid
             double deltaTime = source.getTime() - this.getTime();
 
