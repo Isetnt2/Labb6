@@ -169,7 +169,7 @@ public class ButiksState extends State {
             this.SistaBetalningsTid = source.getTime();
         }
 
-        if (!(source instanceof Ankomsthändelse && !this.ButikÖppen) && !(source instanceof StängerHändelse)) {
+        if (!(source instanceof AnkomstHändelse && !this.ButikÖppen) && !(source instanceof StängerHändelse)) {
             // Beräkna tid
             double deltaTime = source.getTime() - this.getTime();
 

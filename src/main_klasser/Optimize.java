@@ -5,8 +5,8 @@ import general_classes.Simulator;
 import general_classes.Stopphändelse;
 import specefika_klasser.ButiksState;
 import specefika_klasser.eventhändelser.Betalningshändelse;
+import specefika_klasser.eventhändelser.ButikStartHändelse;
 import specefika_klasser.eventhändelser.StängerHändelse;
-import general_classes.StartHändelse;
 import java.util.Random;
 public class Optimize {
 
@@ -28,7 +28,7 @@ public class Optimize {
         ButiksState state = new ButiksState(maxKunder,antalKassor,lambda,kmin,kmax,pmin,pmax,f);
         EventQueue queue = new EventQueue();
 
-        queue.insert(new StartHändelse(state, queue));
+        queue.insert(new ButikStartHändelse(state, queue));
         queue.insert(new Stopphändelse(state, queue, 999));
         queue.insert(new StängerHändelse(queue, endTime, state));
 
