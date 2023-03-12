@@ -1,12 +1,14 @@
 package specefika_klasser;
 
 import java.util.Observable;
+import java.util.Observer;
+
 import general_classes.*;
 
 /**
  * ButiksView implements the general view and prints output when events occur.
  */
-public class ButiksView extends View {
+public class ButiksView extends View implements Observer {
 
     private final ButiksState state;
 
@@ -61,7 +63,7 @@ public class ButiksView extends View {
             return;
         }
 
-        String shopStatus = state.getButikÖppen() ? "Ö" : "S";
+        String shopStatus = state.StatusÖppenButik() ? "Ö" : "S";
         int ledigaKassor = state.getAntalLedigaKassor();
         double tidLedigaKassor = state.getLedigaKassorTid();
         int antalKunder = state.getAntalKunder();
