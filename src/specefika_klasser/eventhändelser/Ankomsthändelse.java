@@ -2,7 +2,6 @@ package specefika_klasser.eventhändelser;
 
 import general_classes.Event;
 import general_classes.EventQueue;
-import general_classes.State;
 import specefika_klasser.ButiksState;
 import specefika_klasser.SkapaKund.Kund;
 
@@ -21,12 +20,12 @@ public class AnkomstHändelse extends Event{
     public void runEvent(){
         super.runEvent();
 
-        if (this.state.getShopOpen()){
-            double ankomstTid = this.state.getAnkomsttid().finishTime(time);
+        if (this.state.getButikÖppen()){
+            double ankomstTid = this.state.getAnkomstTid().finishTime(time);
             AnkomstHändelse ankomsthändelse = new AnkomstHändelse(state, queue, ankomstTid, this.state.getSkapaKund().getKund());
             this.queue.insert(ankomsthändelse);
 
-            if (this.state.getCustomerPopulation() < this.state.getMaxCustomerPopulation()){
+            if (this.state.getAntalKunder() < this.state.getMaxAntalKunder()){
                 this.state.increaseCustomerPopulation();
 
                 double plocktid = this.state.getPlockTid().slutTid(time);
