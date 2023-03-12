@@ -2,10 +2,10 @@ package specefika_klasser.eventhändelser;
 
 import general_classes.Event;
 import general_classes.EventQueue;
-import specefika_klasser.ButiksState;
+import general_classes.State
 
 public class StängerHändelse extends Event{
-    public StängerHändelse(EventQueue queue, double time, ButiksState state){
+    public StängerHändelse(EventQueue queue, double time, State state){
         super(state, queue, time);
     }
 
