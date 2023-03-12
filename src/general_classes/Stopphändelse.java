@@ -1,8 +1,8 @@
 package general_classes;
 
 public class Stopphändelse extends Event{
-    public Stopphändelse(State state, EventQueue queue){
-        super(state, queue, 0);
+    public Stopphändelse(State state, EventQueue queue, int time){
+        super(state, queue, time);
     }
     @Override
     public void runEvent(){

@@ -29,10 +29,10 @@ public class Optimize {
         EventQueue queue = new EventQueue();
 
         queue.insert(new StartHändelse(state, queue));
-        queue.insert(new Stopphändelse(state, queue));
+        queue.insert(new Stopphändelse(state, queue, 999));
         queue.insert(new StängerHändelse(queue, endTime, state));
 
-        Simulator sim = new Simulator(state, queue);
+        Simulator sim = new Simulator(queue, state);
         sim.run();
         return state;
     }
