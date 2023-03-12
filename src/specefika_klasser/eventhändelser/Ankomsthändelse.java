@@ -6,15 +6,17 @@ import general_classes.State;
 import specefika_klasser.ButiksState;
 import specefika_klasser.SkapaKund.Kund;
 
-public class Ankomsthändelse{
+public class AnkomstHändelse extends Event{
     private Kund kund;
     private ButiksState state;
 
-    public Ankomsthändelse(ButiksState state, EventQueue queue, double time, Kund kund){
+    public AnkomstHändelse(ButiksState state, EventQueue queue, double time, Kund kund){
         super(state, queue, time);
         this.k = kund;
         this.state = state;
     }
+
+
     @Override
     public void runEvent(){
         super.runEvent();

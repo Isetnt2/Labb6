@@ -4,12 +4,13 @@ package specefika_klasser; // the class is part of the specefika_klasser package
 import general_classes.State; // imports (general) State to be able to extend State.
 import general_classes.Event; 
 import general_classes.Stopphändelse;
-import specefika_klasser.eventhändelser.Ankomsthändelse;
+import specefika_klasser.eventhändelser.AnkomstHändelse;
 import specefika_klasser.eventhändelser.Betalningshändelse;
 import specefika_klasser.eventhändelser.PlockHändelse;
 import specefika_klasser.eventhändelser.StängerHändelse;
 import specefika_klasser.tider.Ankomsttid;
 import specefika_klasser.tider.BetalningsTid;
+import specefika_klasser.tider.PlockTid;
 
 public class ButiksState extends State {
 
@@ -130,7 +131,7 @@ public class ButiksState extends State {
     public void setShopStatus(boolean status){
         this.shopOpen = status;
         if(!status){
-            this.stängerTid = this.getTime();
+            this.ClosingTime = this.getTime();
         }
     }
 
@@ -167,7 +168,7 @@ public class ButiksState extends State {
         }
 
         // Kör ej om stopEvent ELLER om arrivalevent efter stängning
-        if (!(source instanceof Ankomsthändelse && !this.shopOpen) && !(source instanceof StängerHändelse)) {
+        if (!(source instanceof AnkomstHändelse && !this.shopOpen) && !(source instanceof StängerHändelse)) {
             // Beräkna tid
             double deltaTime = source.getTime() - this.getTime();
 
