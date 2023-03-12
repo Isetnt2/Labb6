@@ -3,12 +3,9 @@ package specefika_klasser; // the class is part of the specefika_klasser package
 
 import general_classes.State; // imports (general) State to be able to extend State.
 import general_classes.Event;
-import specefika_klasser.eventhändelser.AnkomstHändelse;
-import specefika_klasser.eventhändelser.Betalningshändelse;
-import specefika_klasser.eventhändelser.StängerHändelse;
-import specefika_klasser.tider.Ankomsttid;
-import specefika_klasser.tider.BetalningsTid;
-import specefika_klasser.tider.PlockTid;
+import specefika_klasser.eventhändelser.*;
+import specefika_klasser.tider.*;
+import specefika_klasser.FIFO;
 
 public class ButiksState extends State {
 
