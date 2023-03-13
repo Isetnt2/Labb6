@@ -9,7 +9,11 @@ public class Simulator{
     EventQueue queue = new EventQueue();
     State state = new State();
 
-
+    /**
+     *
+     * @param queue
+     * @param state
+     */
     public Simulator(EventQueue queue, State state){
         this.queue = queue;
         this.state = state;

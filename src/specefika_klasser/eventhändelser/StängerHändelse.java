@@ -13,6 +13,13 @@ import specefika_klasser.ButiksState;
 
 public class StängerHändelse extends Event{
     public ButiksState state;
+
+    /**
+     *
+     * @param queue
+     * @param time
+     * @param state
+     */
     public StängerHändelse(EventQueue queue, double time, ButiksState state){
         super(state, queue, time);
         this.state = state;

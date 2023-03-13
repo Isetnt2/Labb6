@@ -11,6 +11,11 @@ public class SkapaKund {
 
     public class Kund {
         public final int id;
+
+        /**
+         *
+         * @param id
+         */
         private Kund(int id){
             this.id = id;
         }

@@ -12,12 +12,23 @@ public class BetalningsTid {
     private Random random;
     private double min, max;
 
+    /**
+     *
+     * @param seed
+     * @param min
+     * @param max
+     */
     public BetalningsTid(long seed, double min, double max){
         this.random = new Random(seed);
         this.min = min;
         this.max = max;
     }
 
+    /**
+     *
+     * @param currentTime
+     * @return
+     */
     public double finishTime(double currentTime){
         return currentTime + min + random.nextDouble()*(max-min);
     }

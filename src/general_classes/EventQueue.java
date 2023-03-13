@@ -7,6 +7,7 @@
 package general_classes;
 
 import java.util.ArrayList;
+
 public class EventQueue {
     ArrayList<Event> queue;
 

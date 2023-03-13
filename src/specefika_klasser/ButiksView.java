@@ -18,15 +18,24 @@ import general_classes.*;
 public class ButiksView extends View implements Observer {
 
     private final ButiksState state;
-    
+
+    /**
+     *
+     * @param state
+     */
     // This is the constructor for ButiksView. It prints initial information about the simulation. ButiksState being observed from here.
     public ButiksView(ButiksState state) {
         super(state);
         this.state = state;
         printStart();
     }
-    
-    // Update method that is called every time an event occurs and prints the corresponding output.
+
+    /**
+     *
+      * @param o     the observable object.
+     * @param arg   an argument passed to the {@code notifyObservers}
+     *                 method.
+     */
     @Override
     public void update(Observable o, Object arg) {
         Event event = (Event) arg;
@@ -56,7 +65,10 @@ public class ButiksView extends View implements Observer {
                 state.getBetalningsTid().getMax(), state.getSeed());
     }
 
-    // Prints out simulation updates.
+    /**
+     *
+      * @param event
+     */
     void printUpdate(Event event) {
         String format = "%6.2f %s  %s  %3d %7.2f % 4d % 4d  % 4d    % 4d  %6.2f    % 4d    %s";
 

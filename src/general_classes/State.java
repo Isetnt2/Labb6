@@ -17,6 +17,10 @@ public class State extends Observable {
         this.stop = false;
     }
 
+    /**
+     *
+     * @param source
+     */
     public void notify(Event source) {
         // Spara när eventet hände
         this.setTime(source.getTime());
@@ -29,6 +33,10 @@ public class State extends Observable {
         return this.time;
     }
 
+    /**
+     *
+     * @param time
+     */
     public void setTime(double time){
         if(this.time > time){
             throw new RuntimeException("Cannot decrease time");

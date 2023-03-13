@@ -28,8 +28,13 @@ public class RunSim {
         ButiksView view = new ButiksView(state);
         state.addObserver(view);
     }
+
+    /**
+     *
+     * @param args
+     */
     public static void main(String[] args){
-        int n = 1;
+        int n = 0;
 
         if(n == 0) {
             // Ex 1

@@ -15,7 +15,10 @@ import specefika_klasser.SkapaKund;
 public class FIFO {
     ArrayList<SkapaKund.Kund> content = new ArrayList<SkapaKund.Kund>();
 
-    // Placerar ny kund längst bak i kön.
+    /**
+     * 
+     * @param kund
+     */
     public void add(SkapaKund.Kund kund){
         content.add(kund);
     }

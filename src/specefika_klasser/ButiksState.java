@@ -32,6 +32,17 @@ public class ButiksState extends State {
     private FIFO kassaKö;
     private SkapaKund skapaKund;
 
+    /**
+     *
+     * @param maxAntalKunder
+     * @param RegisterPopulation
+     * @param lambda
+     * @param kmin
+     * @param kmax
+     * @param pmin
+     * @param pmax
+     * @param seed
+     */
     // implements variables
     public ButiksState(int maxAntalKunder, int RegisterPopulation, double lambda,
                        double kmin, double kmax, double pmin, double pmax, int seed) {
@@ -111,6 +122,10 @@ public class ButiksState extends State {
         return this.KundKöTid;
     }
 
+    /**
+     *
+     * @param time
+     */
     public void increaseCustomerQueueTime(double time){
         this.KundKöTid += time;
     }
@@ -119,6 +134,10 @@ public class ButiksState extends State {
         return this.LedigaKassorTid;
     }
 
+    /**
+     *
+     * @param time
+     */
     public void increaseFreeResgistersTime(double time){
         this.LedigaKassorTid += time;
     }
@@ -135,7 +154,11 @@ public class ButiksState extends State {
     public void StängButiken() {
         this.ButikÖppen = false;
     }
-    
+
+    /**
+     *
+     * @param status
+     */
     public void setShopStatus(boolean status){
         this.ButikÖppen = status;
         if(!status){
@@ -167,7 +190,10 @@ public class ButiksState extends State {
         return this.seed;
     }
 
-    // Meddelar ändringar till Oberserver
+    /**
+     *
+     * @param source
+     */
     @Override
     public void notify(Event source) {
 

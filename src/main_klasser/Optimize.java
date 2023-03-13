@@ -14,7 +14,10 @@ import specefika_klasser.eventhändelser.ButikStartHändelse;
 import specefika_klasser.eventhändelser.StängerHändelse;
 import java.util.Random;
 public class Optimize {
-
+    /**
+     *
+     * @param args
+     */
     public static void main(String[] args) {
         int value = 0;
         if(value == 1) {
@@ -28,6 +31,20 @@ public class Optimize {
         }
     }
 
+    /**
+     *
+     * @param maxKunder
+     * @param antalKassor
+     * @param lambda
+     * @param kmin
+     * @param kmax
+     * @param pmin
+     * @param pmax
+     * @param f
+     * @param endTime
+     * @param stopTime
+     * @return
+     */
     public static ButiksState runSimulationOnce(int maxKunder,int antalKassor, Double lambda,Double kmin,
                                                 double kmax,double pmin, double pmax, int f, double endTime, double stopTime){
         ButiksState state = new ButiksState(maxKunder,antalKassor,lambda,kmin,kmax,pmin,pmax,f);
@@ -42,6 +59,19 @@ public class Optimize {
         return state;
     }
 
+    /**
+     *
+     * @param maxKunder
+     * @param lambda
+     * @param kmin
+     * @param kmax
+     * @param pmin
+     * @param pmax
+     * @param seed
+     * @param endTime
+     * @param stopTime
+     * @return
+     */
     public static int hittaMinimumKassorFörSeed(int maxKunder, double lambda, double kmin, double kmax,
                                                 double pmin, double pmax, int seed, double endTime, double stopTime){
 
@@ -70,6 +100,20 @@ public class Optimize {
         }
         return bästaJustNu;
     }
+
+    /**
+     *
+     * @param maxKunder
+     * @param lambda
+     * @param kmin
+     * @param kmax
+     * @param pmin
+     * @param pmax
+     * @param seed
+     * @param endTime
+     * @param stopTime
+     * @return
+     */
     public static int hittaMinimumKassor(int maxKunder, double lambda,double kmin,double kmax,double pmin,
                                          double pmax, int seed, double endTime, double stopTime){
         int räknare = 0;

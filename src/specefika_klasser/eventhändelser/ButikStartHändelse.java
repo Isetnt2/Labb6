@@ -15,6 +15,11 @@ public class ButikStartHändelse extends StartHändelse {
 
     private ButiksState state;
 
+    /**
+     *
+     * @param state
+     * @param queue
+     */
     public ButikStartHändelse(ButiksState state, EventQueue queue) {
         super(state, queue);
         this.state = state;

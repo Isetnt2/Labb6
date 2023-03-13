@@ -6,7 +6,27 @@
   <component name="ChangeListManager">
     <list default="true" id="97f22fad-98e0-42af-a2f6-649579ae7131" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/general_classes/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/general_classes/Event.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/general_classes/EventQueue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/general_classes/EventQueue.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/general_classes/Simulator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/general_classes/Simulator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/general_classes/StartHändelse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/general_classes/StartHändelse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/general_classes/State.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/general_classes/State.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/general_classes/Stopphändelse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/general_classes/Stopphändelse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/general_classes/View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/general_classes/View.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main_klasser/Optimize.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main_klasser/Optimize.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main_klasser/RunSim.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main_klasser/RunSim.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/specefika_klasser/ButiksState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/specefika_klasser/ButiksState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/specefika_klasser/ButiksView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/specefika_klasser/ButiksView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/specefika_klasser/FIFO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/specefika_klasser/FIFO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/specefika_klasser/SkapaKund.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/specefika_klasser/SkapaKund.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/specefika_klasser/eventhändelser/AnkomstHändelse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/specefika_klasser/eventhändelser/AnkomstHändelse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/specefika_klasser/eventhändelser/Betalningshändelse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/specefika_klasser/eventhändelser/Betalningshändelse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/specefika_klasser/eventhändelser/ButikStartHändelse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/specefika_klasser/eventhändelser/ButikStartHändelse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/specefika_klasser/eventhändelser/PlockHändelse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/specefika_klasser/eventhändelser/PlockHändelse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/specefika_klasser/eventhändelser/StängerHändelse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/specefika_klasser/eventhändelser/StängerHändelse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/specefika_klasser/tider/Ankomsttid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/specefika_klasser/tider/Ankomsttid.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/specefika_klasser/tider/BetalningsTid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/specefika_klasser/tider/BetalningsTid.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/specefika_klasser/tider/PlockTid.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/specefika_klasser/tider/PlockTid.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

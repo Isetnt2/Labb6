@@ -16,6 +16,13 @@ public class PlockHändelse extends Event {
     private Kund kund;
     private ButiksState state;
 
+    /**
+     *
+     * @param state
+     * @param queue
+     * @param time
+     * @param kund
+     */
     public PlockHändelse(ButiksState state, EventQueue queue, double time, Kund kund) {
         super(state, queue, time);
         this.kund = kund;

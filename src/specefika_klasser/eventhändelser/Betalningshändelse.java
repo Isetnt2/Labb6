@@ -17,6 +17,14 @@ public class Betalningshändelse extends Event{
 
     ButiksState state;
     Kund kund;
+
+    /**
+     *
+     * @param state
+     * @param queue
+     * @param time
+     * @param kund
+     */
     public Betalningshändelse(ButiksState state, EventQueue queue, double time, Kund kund) {
         super(state, queue, time);
         this.state = state;
