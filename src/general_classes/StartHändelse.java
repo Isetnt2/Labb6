@@ -1,3 +1,9 @@
+/*
+ * Isak Ahlberg
+ * Joline Hallberg
+ * John Kågström
+ * Oscar Bucht
+ */
 package general_classes;
 
 public class StartHändelse extends Event{

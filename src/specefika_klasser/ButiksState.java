@@ -1,4 +1,9 @@
-
+/*
+ * Isak Ahlberg
+ * Joline Hallberg
+ * John Kågström
+ * Oscar Bucht
+ */
 package specefika_klasser; // the class is part of the specefika_klasser package
 
 import general_classes.State; // imports (general) State to be able to extend State.

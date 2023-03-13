@@ -1,3 +1,9 @@
+/*
+ * Isak Ahlberg
+ * Joline Hallberg
+ * John Kågström
+ * Oscar Bucht
+ */
 package specefika_klasser;
 
 public class SkapaKund {

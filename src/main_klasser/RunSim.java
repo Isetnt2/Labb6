@@ -1,3 +1,9 @@
+/*
+ * Isak Ahlberg
+ * Joline Hallberg
+ * John Kågström
+ * Oscar Bucht
+ */
 package main_klasser;
 
 import general_classes.*;

@@ -1,10 +1,15 @@
+/*
+ * Isak Ahlberg
+ * Joline Hallberg
+ * John Kågström
+ * Oscar Bucht
+ */
 package main_klasser;
 
 import general_classes.EventQueue;
 import general_classes.Simulator;
 import general_classes.Stopphändelse;
 import specefika_klasser.ButiksState;
-import specefika_klasser.eventhändelser.Betalningshändelse;
 import specefika_klasser.eventhändelser.ButikStartHändelse;
 import specefika_klasser.eventhändelser.StängerHändelse;
 import java.util.Random;
